@@ -3,7 +3,7 @@
   "packageManager": "yarn@4.5.2",
   "scripts": {
     "start": "http-server .",
-    "newSketch": "cp -r projects/blank projects/${0}"
+    "new": "cp -r projects/blank projects/${0}"
   },
   "devDependencies": {
     "http-server": "^14.1.1"
