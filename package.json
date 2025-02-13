@@ -6,6 +6,7 @@
     "new": "cp -r projects/blank projects/${0}"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "prettier": "^3.5.0"
   }
 }
