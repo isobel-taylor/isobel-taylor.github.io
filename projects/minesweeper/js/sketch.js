@@ -24,51 +24,30 @@ function setup() {
     const rows = floor((height - window.topUiHeight) / window.cellWidth);
 
     const cellCount = columns * rows;
-    const bombCount = floor(cellCount / 10);
+    const bombCount = floor(cellCount / 5);
 
     window.field = new Field(columns, rows, bombCount);
-
-    window.isCtrlDown = false;
-    window.isShiftDown = false;
-}
-
-function keyPressed() {
-    switch (keyCode) {
-        case CONTROL:
-            window.isCtrlDown = true;
-            break;
-        case SHIFT:
-            window.isShiftDown = true;
-            break;
-    }
-}
-
-function keyReleased() {
-    switch (keyCode) {
-        case CONTROL:
-            window.isCtrlDown = false;
-            break;
-        case SHIFT:
-            window.isShiftDown = false;
-            break;
-    }
 }
 
 function mousePressed() {
     if (mouseY < window.topUiHeight) {
         window.field.clickTopUi();
+        return;
     }
 
-    if (window.isCtrlDown) {
+    if (keyIsDown(CONTROL)) {
         window.field.flagCellAtCoords(mouseX, mouseY - window.topUiHeight);
-    } else if (window.isShiftDown) {
+        return;
+    }
+    if (keyIsDown(SHIFT)) {
         window.field.revealSurroundingCellsAtCoords(
             mouseX,
             mouseY - window.topUiHeight,
         );
-    } else {
-        window.field.revealCellAtCoords(mouseX, mouseY - window.topUiHeight);
+        return;
     }
+    
+    window.field.revealCellAtCoords(mouseX, mouseY - window.topUiHeight);
 }
 
 function draw() {
