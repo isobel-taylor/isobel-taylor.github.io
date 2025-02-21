@@ -1,20 +1,20 @@
 // See https://containers.dev/implementors/json_reference/ for configuration reference
 {
-	"name": "Project website",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-	"remoteUser": "node",
-	"features": {
-		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
-	},
-	"customizations": {
-    "vscode": {
-      "settings": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-      },
-      "extensions": ["esbenp.prettier-vscode"]
+    "name": "Project website",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "node",
+    "features": {
+        "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "extensions": ["esbenp.prettier-vscode"]
+        }
     }
-  }
 }
