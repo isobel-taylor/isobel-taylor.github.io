@@ -1,5 +1,5 @@
 function preload() {
-    window.digits = {
+    window.images = {
         blank: loadImage("assets/blank.png"),
         0: loadImage("assets/0.png"),
         1: loadImage("assets/1.png"),
@@ -11,11 +11,17 @@ function preload() {
         7: loadImage("assets/7.png"),
         8: loadImage("assets/8.png"),
         9: loadImage("assets/9.png"),
+        revealed_blank: loadImage("assets/revealed_blank.png"),
+        revealed_bomb_exploded: loadImage("assets/revealed_bomb_exploded.png"),
+        revealed_bomb: loadImage("assets/revealed_bomb.png"),
+        unrevealed_blank: loadImage("assets/unrevealed_blank.png"),
+        unrevealed_flagged: loadImage("assets/unrevealed_flagged.png"),
+        face_background: loadImage("assets/face_background.png"),
     };
 }
 
 function setup() {
-    createCanvas(800, 700);
+    createCanvas(800, 690);
 
     window.cellWidth = 20;
     window.topUiHeight = 50;
@@ -46,7 +52,7 @@ function mousePressed() {
         );
         return;
     }
-    
+
     window.field.revealCellAtCoords(mouseX, mouseY - window.topUiHeight);
 }
 

@@ -30,60 +30,8 @@ class Field {
     showTopUI() {
         fill(150);
         noStroke();
-        rectMode(CENTER);
-        square(width / 2, window.topUiHeight / 2, window.topUiHeight * 0.7);
-
-        stroke(255);
-        strokeWeight(1);
-        line(
-            width * 0.5 - window.topUiHeight * 0.35,
-            window.topUiHeight * 0.15,
-            width * 0.5 + window.topUiHeight * 0.35,
-            window.topUiHeight * 0.15,
-        );
-        line(
-            width * 0.5 - window.topUiHeight * 0.35,
-            window.topUiHeight * 0.15 + 1,
-            width * 0.5 + window.topUiHeight * 0.35,
-            window.topUiHeight * 0.15 + 1,
-        );
-        line(
-            width * 0.5 - window.topUiHeight * 0.35,
-            window.topUiHeight * 0.15,
-            width * 0.5 - window.topUiHeight * 0.35,
-            window.topUiHeight * 0.85,
-        );
-        line(
-            width * 0.5 - window.topUiHeight * 0.35 + 1,
-            window.topUiHeight * 0.15,
-            width * 0.5 - window.topUiHeight * 0.35 + 1,
-            window.topUiHeight * 0.85,
-        );
-        stroke(100);
-        line(
-            width * 0.5 - window.topUiHeight * 0.35 + 1,
-            window.topUiHeight * 0.85 - 1,
-            width * 0.5 + window.topUiHeight * 0.35,
-            window.topUiHeight * 0.85 - 1,
-        );
-        line(
-            width * 0.5 - window.topUiHeight * 0.35,
-            window.topUiHeight * 0.85,
-            width * 0.5 + window.topUiHeight * 0.35,
-            window.topUiHeight * 0.85,
-        );
-        line(
-            width * 0.5 + window.topUiHeight * 0.35 - 1,
-            window.topUiHeight * 0.15 + 1,
-            width * 0.5 + window.topUiHeight * 0.35 - 1,
-            window.topUiHeight * 0.85,
-        );
-        line(
-            width * 0.5 + window.topUiHeight * 0.35,
-            window.topUiHeight * 0.15,
-            width * 0.5 + window.topUiHeight * 0.35,
-            window.topUiHeight * 0.85,
-        );
+        imageMode(CENTER);
+        image(window.images.face_background, width / 2, window.topUiHeight / 2);
 
         textSize(window.topUiHeight * 0.5);
         textAlign(CENTER, CENTER);
@@ -115,7 +63,7 @@ class Field {
         imageMode(CENTER);
         finalDigits.forEach((digit, index) => {
             image(
-                window.digits[digit],
+                window.images[digit],
                 window.width * 0.75 + index * 13,
                 window.topUiHeight / 2,
             );

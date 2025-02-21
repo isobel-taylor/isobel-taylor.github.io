@@ -111,125 +111,33 @@ class Cell {
     }
 
     showUnrevealed(x, y) {
-        this.drawUnrevealedBackground(x, y);
+        imageMode(CORNER);
 
         if (this.flagged) {
-            this.drawFlag(x, y);
+            image(window.images.unrevealed_flagged, x, y);
+        } else {
+            image(window.images.unrevealed_blank, x, y);
         }
     }
 
     showRevealed(x, y) {
-        this.drawRevealedBackground(x, y);
+        imageMode(CORNER);
+
+        if (this.killedPlayer) {
+            image(window.images.revealed_bomb_exploded, x, y);
+            return;
+        }
 
         if (this.hasBomb) {
-            this.drawBomb(x, y);
+            image(window.images.revealed_bomb, x, y);
+            return;
         }
+
+        image(window.images.revealed_blank, x, y);
 
         if (this.bombCount !== undefined) {
             this.drawNumber(x, y);
         }
-    }
-
-    drawRevealedBackground(x, y) {
-        if (this.killedPlayer) {
-            fill(255, 0, 0);
-        } else {
-            fill(200);
-        }
-
-        stroke(100);
-        strokeWeight(1);
-        rectMode(CORNER);
-        square(x, y, window.cellWidth);
-
-        stroke(150);
-        line(x + 1, y + 1, x + window.cellWidth - 1, y + 1);
-        line(x + 1, y + window.cellWidth - 1, x + 1, y + 1);
-    }
-
-    drawUnrevealedBackground(x, y) {
-        fill(200);
-        noStroke();
-        rectMode(CORNER);
-        square(x, y, window.cellWidth);
-
-        stroke(100);
-        strokeWeight(1);
-        line(
-            x + 1,
-            y + window.cellWidth - 1,
-            x + window.cellWidth - 1,
-            y + window.cellWidth - 1,
-        );
-        line(
-            x + window.cellWidth - 1,
-            y + 1,
-            x + window.cellWidth - 1,
-            y + window.cellWidth - 1,
-        );
-        line(
-            x + 2,
-            y + window.cellWidth - 2,
-            x + window.cellWidth - 2,
-            y + window.cellWidth - 2,
-        );
-        line(
-            x + window.cellWidth - 2,
-            y + 2,
-            x + window.cellWidth - 2,
-            y + window.cellWidth - 2,
-        );
-
-        stroke(255);
-        line(x + 1, y + 1, x + window.cellWidth - 1, y + 1);
-        line(x + 1, y + 1, x + 1, y + window.cellWidth - 1);
-        line(x + 2, y + 2, x + window.cellWidth - 2, y + 2);
-        line(x + 2, y + 2, x + 2, y + window.cellWidth - 2);
-    }
-
-    drawFlag(x, y) {
-        fill(0);
-        stroke(0);
-        strokeWeight(1);
-        line(
-            x + window.cellWidth * 0.6 - 1,
-            y + window.cellWidth * 0.5,
-            x + window.cellWidth * 0.6 - 1,
-            y + window.cellWidth * 0.8,
-        );
-        line(
-            x + window.cellWidth * 0.6 - 2,
-            y + window.cellWidth * 0.5,
-            x + window.cellWidth * 0.6 - 2,
-            y + window.cellWidth * 0.8,
-        );
-
-        fill(200, 0, 0);
-        noStroke();
-        triangle(
-            x + window.cellWidth * 0.6,
-            y + window.cellWidth * 0.2,
-            x + window.cellWidth * 0.25,
-            y + window.cellWidth * 0.4,
-            x + window.cellWidth * 0.6,
-            y + window.cellWidth * 0.6,
-        );
-
-        fill(0);
-        stroke(0);
-        strokeWeight(1);
-        line(
-            x + window.cellWidth * 0.2,
-            y + window.cellWidth * 0.8,
-            x + window.cellWidth * 0.8,
-            y + window.cellWidth * 0.8,
-        );
-        line(
-            x + window.cellWidth * 0.3,
-            y + window.cellWidth * 0.8 - 1,
-            x + window.cellWidth * 0.7,
-            y + window.cellWidth * 0.8 - 1,
-        );
     }
 
     drawNumber(x, y) {
@@ -249,50 +157,6 @@ class Cell {
             this.bombCount,
             x + window.cellWidth * 0.45,
             y + window.cellWidth * 0.6,
-        );
-    }
-
-    drawBomb(x, y) {
-        fill(0);
-        stroke(0);
-        strokeWeight(2);
-        circle(
-            x + window.cellWidth * 0.5,
-            y + window.cellWidth * 0.5,
-            window.cellWidth * 0.4,
-        );
-
-        line(
-            x + window.cellWidth * 0.25,
-            y + window.cellWidth * 0.25,
-            x + window.cellWidth * 0.75,
-            y + window.cellWidth * 0.75,
-        );
-        line(
-            x + window.cellWidth * 0.75,
-            y + window.cellWidth * 0.25,
-            x + window.cellWidth * 0.25,
-            y + window.cellWidth * 0.75,
-        );
-        line(
-            x + window.cellWidth * 0.5,
-            y + window.cellWidth * 0.2,
-            x + window.cellWidth * 0.5,
-            y + window.cellWidth * 0.8,
-        );
-        line(
-            x + window.cellWidth * 0.2,
-            y + window.cellWidth * 0.5,
-            x + window.cellWidth * 0.8,
-            y + window.cellWidth * 0.5,
-        );
-
-        fill(255);
-        stroke(255);
-        circle(
-            x + window.cellWidth * 0.5 - 1,
-            y + window.cellWidth * 0.5 - 1,
-            1,
         );
     }
 }
