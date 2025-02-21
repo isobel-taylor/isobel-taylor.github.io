@@ -28,6 +28,16 @@ class Field {
     }
 
     showTopUI() {
+        noStroke();
+        fill(0);
+        textSize(window.topUiHeight * 0.25);
+        textAlign(LEFT, CENTER);
+        text(
+            "Ctrl+click to flag, shift+click to clear neighbouring cells",
+            10,
+            window.topUiHeight * 0.5,
+        );
+
         fill(150);
         noStroke();
         imageMode(CENTER);
