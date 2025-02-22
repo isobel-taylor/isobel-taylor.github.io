@@ -32,10 +32,12 @@ class Field {
         fill(0);
         textSize(window.topUiHeight * 0.25);
         textAlign(LEFT, CENTER);
+        text("Ctrl+click to flag,", 10, window.topUiHeight * 0.3);
+
         text(
-            "Ctrl+click to flag, shift+click to clear neighbouring cells",
+            "Shift+click to clear neighbouring cells",
             10,
-            window.topUiHeight * 0.5,
+            window.topUiHeight * 0.7,
         );
 
         fill(150);
@@ -74,7 +76,7 @@ class Field {
         finalDigits.forEach((digit, index) => {
             image(
                 window.images[digit],
-                window.width * 0.75 + index * 13,
+                window.width * 0.75 + index * 15,
                 window.topUiHeight / 2,
             );
         });
