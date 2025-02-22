@@ -50,11 +50,11 @@ class Cell {
         const xMax = (this.i + 1) * window.cellWidth;
         const yMax = (this.j + 1) * window.cellWidth;
 
-        if (x <= xMin || x >= xMax) {
+        if (x < xMin || x >= xMax) {
             return false;
         }
 
-        if (y <= yMin || y >= yMax) {
+        if (y < yMin || y >= yMax) {
             return false;
         }
 
