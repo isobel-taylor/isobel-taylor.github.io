@@ -156,7 +156,7 @@ class Cell {
         text(
             this.bombCount,
             x + window.cellWidth * 0.45,
-            y + window.cellWidth * 0.6,
+            y + window.cellWidth * 0.6 + 1,
         );
     }
 }
