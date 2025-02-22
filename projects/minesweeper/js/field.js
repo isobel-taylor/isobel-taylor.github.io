@@ -32,7 +32,7 @@ class Field {
         fill(0);
         textSize(window.topUiHeight * 0.25);
         textAlign(LEFT, CENTER);
-        text("Ctrl+click to flag,", 10, window.topUiHeight * 0.3);
+        text("Ctrl+click to flag", 10, window.topUiHeight * 0.3);
 
         text(
             "Shift+click to clear neighbouring cells",
