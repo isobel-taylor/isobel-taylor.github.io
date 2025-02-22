@@ -30,7 +30,7 @@ function setup() {
     const rows = floor((height - window.topUiHeight) / window.cellWidth);
 
     const cellCount = columns * rows;
-    const bombCount = floor(cellCount / 5);
+    const bombCount = floor(cellCount / 6);
 
     window.field = new Field(columns, rows, bombCount);
 }
