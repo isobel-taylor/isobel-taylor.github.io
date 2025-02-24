@@ -1,7 +1,10 @@
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(600, 600);
 
     angleMode(DEGREES);
+
+    // Calculate the points around a circle at three equal spaces, and make our
+    // snowflake out of them.
     window.snowflake = [0, 1, 2].map((index) => {
         const r = width / 2.2;
         const x1 = r * cos(index * 120 + 90);
