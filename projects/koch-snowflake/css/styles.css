@@ -1,0 +1,19 @@
+html {
+    box-sizing: border-box !important;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+canvas {
+    display: block;
+}
