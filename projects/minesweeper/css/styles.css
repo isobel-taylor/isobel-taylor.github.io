@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box !important;
+    background-color: #dcdcdc;
 }
 
 *,
@@ -16,4 +17,46 @@ body {
 
 canvas {
     display: block;
+}
+
+#top-ui {
+    height: 50px;
+    width: 800px;
+    display: grid;
+    grid-template-columns: 3fr 1fr 3fr;
+}
+
+#instructions {
+    padding-left: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#emoji-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#emoji {
+    width: 35px;
+    height: 35px;
+    align-self: center;
+    cursor: pointer;
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/face_background.png");
+}
+
+#score-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#score {
+    align-self: center;
 }

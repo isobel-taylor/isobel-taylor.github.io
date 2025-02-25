@@ -17,43 +17,24 @@ class Field {
                 this.grid[i][j] = new Cell(i, j);
             }
         }
+
+        this.showTopUI();
     }
 
     show() {
-        this.showTopUI();
-
         for (const cell of this.getAllCells()) {
             cell.show();
         }
     }
 
     showTopUI() {
-        noStroke();
-        fill(0);
-        textSize(window.topUiHeight * 0.25);
-        textAlign(LEFT, CENTER);
-        text("Ctrl+click to flag", 10, window.topUiHeight * 0.3);
-
-        text(
-            "Shift+click to clear neighbouring cells",
-            10,
-            window.topUiHeight * 0.7,
-        );
-
-        fill(150);
-        noStroke();
-        imageMode(CENTER);
-        image(window.images.face_background, width / 2, window.topUiHeight / 2);
-
-        textSize(window.topUiHeight * 0.5);
-        textAlign(CENTER, CENTER);
-
+        const emojiButton = select("#emoji");
         if (this.isGameOver) {
-            text("😵", width / 2, window.topUiHeight / 2 + 3);
+            emojiButton.elt.innerHTML = "😵";
         } else if (this.gameWon) {
-            text("😎", width / 2, window.topUiHeight / 2 + 3);
+            emojiButton.elt.innerHTML = "😎";
         } else {
-            text("🙂", width / 2, window.topUiHeight / 2 + 3);
+            emojiButton.elt.innerHTML = "🙂";
         }
 
         this.showUnflaggedBombCount();
@@ -72,14 +53,13 @@ class Field {
 
         const finalDigits = [...blankDigits, ...digits];
 
-        imageMode(CENTER);
-        finalDigits.forEach((digit, index) => {
-            image(
-                window.images[digit],
-                window.width * 0.75 + index * 15,
-                window.topUiHeight / 2,
-            );
+        const scoreContainer = select("#score");
+
+        const innerHtml = finalDigits.map((digit) => {
+            return `<img src="./assets/${digit}.png" />`;
         });
+
+        scoreContainer.elt.innerHTML = innerHtml.join("");
     }
 
     gameOver() {
@@ -118,6 +98,8 @@ class Field {
         clickedCell.reveal();
 
         this.checkGameWon();
+
+        this.showTopUI();
     }
 
     clickTopUi() {
@@ -139,6 +121,8 @@ class Field {
         }
 
         clickedCell.toggleFlagged();
+
+        this.showTopUI();
     }
 
     revealSurroundingCellsAtCoords(x, y) {
@@ -170,6 +154,8 @@ class Field {
         }
 
         this.checkGameWon();
+
+        this.showTopUI();
     }
 
     getCellAtCoords(x, y) {

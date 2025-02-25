@@ -21,10 +21,10 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(800, 690);
+    createCanvas(800, 640);
 
     window.cellWidth = 20;
-    window.topUiHeight = 50;
+    window.topUiHeight = 0;
 
     const columns = floor(width / window.cellWidth);
     const rows = floor((height - window.topUiHeight) / window.cellWidth);
@@ -33,13 +33,16 @@ function setup() {
     const bombCount = floor(cellCount / 6);
 
     window.field = new Field(columns, rows, bombCount);
+
+    const emojiButton = select("#emoji");
+    emojiButton.elt.addEventListener("click", () => window.field.clickTopUi());
 }
 
 function mousePressed() {
-    if (mouseY < window.topUiHeight) {
-        window.field.clickTopUi();
-        return;
-    }
+    // if (mouseY < window.topUiHeight) {
+    //     window.field.clickTopUi();
+    //     return;
+    // }
 
     if (keyIsDown(CONTROL)) {
         window.field.flagCellAtCoords(mouseX, mouseY - window.topUiHeight);
