@@ -104,6 +104,8 @@ class Field {
 
     clickTopUi() {
         this.reset();
+
+        this.showTopUI();
     }
 
     flagCellAtCoords(x, y) {
