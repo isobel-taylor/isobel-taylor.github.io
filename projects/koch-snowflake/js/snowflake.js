@@ -75,7 +75,7 @@ class Snowflake {
                     this.p2.x,
                     this.p2.y,
                     threeQuarterColor,
-                    this.colourEndt,
+                    this.colourEnd,
                 ),
             ];
         } else {
