@@ -1,5 +1,5 @@
 function setup() {
-    createCanvas(600, 600);
+    createCanvas(windowWidth, windowHeight);
 
     angleMode(DEGREES);
     colorMode(HSB, 360);
