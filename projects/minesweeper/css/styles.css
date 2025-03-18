@@ -33,6 +33,13 @@ canvas {
     flex-direction: column;
     justify-content: center;
     user-select: none;
+    font-size: small;
+}
+
+@media only screen and (min-width: 800px) {
+    #instructions {
+        font-size: medium;
+    }
 }
 
 #emoji-container {
