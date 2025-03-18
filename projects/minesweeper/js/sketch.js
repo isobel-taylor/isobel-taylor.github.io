@@ -21,7 +21,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(800, 640);
+    createCanvas(windowWidth, windowHeight - 50);
 
     window.cellWidth = 20;
     window.topUiHeight = 0;
