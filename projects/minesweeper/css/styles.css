@@ -22,7 +22,7 @@ canvas {
 
 #top-ui {
     height: 50px;
-    width: 800px;
+    width: 100%;
     display: grid;
     grid-template-columns: 3fr 1fr 3fr;
 }
