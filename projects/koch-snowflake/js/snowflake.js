@@ -1,5 +1,5 @@
 class Snowflake {
-    constructor(x1, y1, x2, y2, colourStart, colourEnd) {
+    constructor(x1, y1, x2, y2, colourStart, colourEnd, depth = 1) {
         this.p1 = createVector(x1, y1);
         this.p2 = createVector(x2, y2);
 
@@ -7,12 +7,14 @@ class Snowflake {
         this.colourEnd = colourEnd;
 
         this.children = [];
+
+        this.depth = depth;
     }
 
     divide(depth = 1) {
         // Prevent it going too far, this will crash the browser if you go down
         // to infinity.
-        if (depth > window.MAX_DEPTH) {
+        if (depth > 6) {
             return;
         }
 
@@ -52,6 +54,7 @@ class Snowflake {
                     oneQuarterPoint.y,
                     this.colourStart,
                     oneQuarterColour,
+                    this.depth + 1,
                 ),
                 new Snowflake(
                     oneQuarterPoint.x,
@@ -60,6 +63,7 @@ class Snowflake {
                     twoQuarterPoint.y,
                     oneQuarterColour,
                     twoQuarterColour,
+                    this.depth + 1,
                 ),
                 new Snowflake(
                     twoQuarterPoint.x,
@@ -68,6 +72,7 @@ class Snowflake {
                     threeQuarterPoint.y,
                     twoQuarterColour,
                     threeQuarterColor,
+                    this.depth + 1,
                 ),
                 new Snowflake(
                     threeQuarterPoint.x,
@@ -76,6 +81,7 @@ class Snowflake {
                     this.p2.y,
                     threeQuarterColor,
                     this.colourEnd,
+                    this.depth + 1,
                 ),
             ];
         } else {
@@ -85,9 +91,18 @@ class Snowflake {
         }
     }
 
+    // As we draw more segments, we can draw fewer segments.
+    getSegmentCount() {
+        switch (this.depth) {
+            case 1: return 12;
+            case 2: return 3;
+            default: return 1;
+        }
+    }
+
     show() {
         if (this.children.length === 0) {
-            const SEGMENTS = 12;
+            const SEGMENTS = this.getSegmentCount();
 
             for (let i = 0; i < SEGMENTS; i++) {
                 const startPoint = p5.Vector.lerp(
