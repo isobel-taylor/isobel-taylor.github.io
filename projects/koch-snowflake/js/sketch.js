@@ -1,6 +1,8 @@
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
+    window.MAX_DEPTH = width > 600 ? 5 : 4;
+
     angleMode(DEGREES);
     colorMode(HSB, 360);
 

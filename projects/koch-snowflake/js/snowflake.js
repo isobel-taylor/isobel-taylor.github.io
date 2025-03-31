@@ -12,7 +12,7 @@ class Snowflake {
     divide(depth = 1) {
         // Prevent it going too far, this will crash the browser if you go down
         // to infinity.
-        if (depth > 6) {
+        if (depth > window.MAX_DEPTH) {
             return;
         }
 
